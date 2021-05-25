@@ -1,5 +1,9 @@
 # HearthSim
 
+## Java 教程
+
+https://www.liaoxuefeng.com/wiki/1252599548343744/
+
 ## Git五分钟教程
 
 https://www.runoob.com/w3cnote/git-five-minutes-tutorial.html

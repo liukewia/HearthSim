@@ -27,7 +27,7 @@ public class PlayerModel implements DeepCopyable<PlayerModel>, Iterable<Minion> 
     private byte deckPos;
     private byte fatigueDamage;
 
-    // this uses identity list because we need exact reference equality and we modified Minion.equals
+    // this uses identity list because we need exact *reference equality* and we modified Minion.equals
     private IdentityLinkedList<Minion> minions;
     private HandModel hand;
     private byte overload;
@@ -398,6 +398,9 @@ public class PlayerModel implements DeepCopyable<PlayerModel>, Iterable<Minion> 
         return new HandIterator(this);
     }
 
+    /**
+     * inner class: CharacterIterator
+     */
     public class CharacterIterator implements Iterator<Minion> {
         private int location = -1;
         private final PlayerModel target;
@@ -422,6 +425,9 @@ public class PlayerModel implements DeepCopyable<PlayerModel>, Iterable<Minion> 
         }
     }
 
+    /**
+     * inner class: HandIterator
+     */
     public class HandIterator implements Iterator<Card> {
         private int location = -1;
         private final PlayerModel target;

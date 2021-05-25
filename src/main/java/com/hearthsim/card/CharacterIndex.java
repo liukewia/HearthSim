@@ -10,8 +10,8 @@ import java.util.Map;
  */
 public enum CharacterIndex {
 
-    HERO(0),
-    MINION_1(1),
+    HERO(0),  // assign value for all attributes https://www.cnblogs.com/mimosading/archive/2013/12/13/3472578.html
+    MINION_1(1), // each of it is a CharacterIndex
     MINION_2(2),
     MINION_3(3),
     MINION_4(4),
@@ -23,6 +23,7 @@ public enum CharacterIndex {
     UNKNOWN(99);
 
     private final int index;
+    // the 'index' that passes to the argument of the constructor is the HERO('index')
     CharacterIndex(int index) {
         this.index = index;
     }

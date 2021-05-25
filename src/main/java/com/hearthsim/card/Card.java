@@ -50,6 +50,7 @@ public class Card implements DeepCopyable<Card> {
         LEGENDARY
     }
 
+    // related to card rarity
     public static CardRarity StringToCardRarity(String rarity) {
         rarity = rarity == null ? "" : rarity.toLowerCase();
         switch (rarity) {
@@ -152,7 +153,7 @@ public class Card implements DeepCopyable<Card> {
         return inHand;
     }
 
-    // Use for bounce (e.g., Brewmaster) or recreate (e.g., Reincarnate)
+    // Use for bounce (e.g., Brewmaster年轻的酒仙) or recreate (e.g., Reincarnate萨满重生)
     public Card createResetCopy() {
         try {
             Constructor<? extends Card> ctor = this.getClass().getConstructor();
@@ -249,19 +250,25 @@ public class Card implements DeepCopyable<Card> {
      * @return
      */
     public boolean canBeUsedOn(PlayerSide playerSide, Minion minion, BoardModel boardModel) {
+        // check if mana is sufficient
         if (!(this.getManaCost(PlayerSide.CURRENT_PLAYER, boardModel) <= boardModel.getCurrentPlayer().getMana())) {
             return false;
         }
 
+        // TODO ignore minion cards for now
         if (this instanceof EffectOnResolveTargetable) {
-            if (!((EffectOnResolveTargetable)this).getTargetableFilter().targetMatches(PlayerSide.CURRENT_PLAYER, this, playerSide, minion, boardModel)) {
-                return false;
-            }
-        } else if (this instanceof SpellCard && playerSide != PlayerSide.CURRENT_PLAYER || !minion.isHero()) { // TODO ignore minion cards for now
-            return false;
-        }
+            return ((EffectOnResolveTargetable) this).getTargetableFilter()
+                .targetMatches(PlayerSide.CURRENT_PLAYER, this, playerSide, minion, boardModel);
+        } else
+            return (!(this instanceof SpellCard) || playerSide == PlayerSide.CURRENT_PLAYER) && minion.isHero();
 
-        return true;
+//        if (this instanceof EffectOnResolveTargetable) {
+//            if (!((EffectOnResolveTargetable)this).getTargetableFilter().targetMatches(PlayerSide.CURRENT_PLAYER, this, playerSide, minion, boardModel)) {
+//                return false;
+//            }
+//        } else if (this instanceof SpellCard && playerSide != PlayerSide.CURRENT_PLAYER || !minion.isHero()) { // TODO ignore minion cards for now
+//            return false;
+//        }
     }
 
     public boolean canBeUsedOn(PlayerSide playerSide, CharacterIndex targetIndex, BoardModel boardModel) {

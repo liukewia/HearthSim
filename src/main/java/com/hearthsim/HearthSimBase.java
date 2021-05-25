@@ -21,8 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class HearthSimBase extends Observable {
 
-    private final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(this
-            .getClass());
+    private final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(this.getClass());
 
     int numSims_;
     int numThreads_;
@@ -40,20 +39,14 @@ public abstract class HearthSimBase extends Observable {
      * @throws HSParamNotFoundException
      * @throws IOException
      */
-    HearthSimBase(Path setupFilePath) throws HSInvalidParamFileException,
-            HSParamNotFoundException, IOException {
+    HearthSimBase(Path setupFilePath) throws HSInvalidParamFileException, HSParamNotFoundException, IOException {
         rootPath_ = setupFilePath.getParent();
         ParamFile masterParam = new ParamFile(setupFilePath);
         numSims_ = masterParam.getInt("num_simulations", 40000);
         numThreads_ = masterParam.getInt("num_threads", 1);
-        aiParamFilePath0_ = FileSystems.getDefault()
-                .getPath(rootPath_.toString(),
-                        masterParam.getString("aiParamFilePath0"));
-        aiParamFilePath1_ = FileSystems.getDefault()
-                .getPath(rootPath_.toString(),
-                        masterParam.getString("aiParamFilePath1"));
-        gameResultFileName_ = masterParam.getString("output_file",
-                "gameres.txt");
+        aiParamFilePath0_ = FileSystems.getDefault().getPath(rootPath_.toString(), masterParam.getString("aiParamFilePath0"));
+        aiParamFilePath1_ = FileSystems.getDefault().getPath(rootPath_.toString(), masterParam.getString("aiParamFilePath1"));
+        gameResultFileName_ = masterParam.getString("output_file", "gameres.txt");
     }
 
     public HearthSimBase(int numSimulations, int numThreads) {
@@ -72,8 +65,7 @@ public abstract class HearthSimBase extends Observable {
      * @throws HSException
      * @throws IOException
      */
-    protected abstract GameResult runSingleGame(int gameId) throws HSException,
-            IOException;
+    protected abstract GameResult runSingleGame(int gameId) throws HSException, IOException;
 
     protected GameResult runSingleGame(ArtificialPlayer ai0, Hero hero0,
             Deck deck0, ArtificialPlayer ai1, Hero hero1, Deck deck1)
@@ -119,6 +111,7 @@ public abstract class HearthSimBase extends Observable {
         return game.runGame();
     }
 
+    //
     protected GameResult runSingleGame(ArtificialPlayer ai0, Hero hero0,
             Deck deck0, ArtificialPlayer ai1, Hero hero1, Deck deck1,
             int firstPlayerId) throws HSException {

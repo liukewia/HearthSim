@@ -41,27 +41,28 @@ public class Game {
         }
 
         public Game(PlayerModel playerModel0, PlayerModel playerModel1, ArtificialPlayer ai0, ArtificialPlayer ai1, int firstPlayerId) {
+            // 默认0号玩家先手
             playerGoingFirst = playerModel0;
             PlayerModel playerGoingSecond = playerModel1;
 
-        aiForPlayerGoingFirst = ai0;
-        aiForPlayerGoingSecond = ai1;
+            aiForPlayerGoingFirst = ai0;
+            aiForPlayerGoingSecond = ai1;
 
-        if (firstPlayerId == 1) {
-            playerGoingFirst = playerModel1;
-            playerGoingSecond = playerModel0;
-            aiForPlayerGoingFirst = ai1;
-            aiForPlayerGoingSecond = ai0;
-        }
-        log.debug("alternate play order: {}", firstPlayerId);
-        log.debug("first player id: {}", playerGoingFirst.getPlayerId());
+            if (firstPlayerId == 1) {
+                playerGoingFirst = playerModel1;
+                playerGoingSecond = playerModel0;
+                aiForPlayerGoingFirst = ai1;
+                aiForPlayerGoingSecond = ai0;
+            }
+            log.debug("alternate play order: {}", firstPlayerId);
+            log.debug("first player id: {}", playerGoingFirst.getPlayerId());
 
             boardModel = new BoardModel(playerGoingFirst, playerGoingSecond);
 
         }
 
         public Game(PlayerModel playerModel0, PlayerModel playerModel1, ArtificialPlayer ai0, ArtificialPlayer ai1, boolean shufflePlayOrder) {
-            this(playerModel0, playerModel1, ai0, ai1, shufflePlayOrder && Math.random() >= 0.5 ? 0 : 1);
+            this(playerModel0, playerModel1, ai0, ai1, shufflePlayOrder && Math.random() >= 0.5 ? 0 : 1);  // 若shufflePlayOrder为true，对半概率决定谁先手
     }
 
     public GameResult runGame() throws HSException {
@@ -102,7 +103,7 @@ public class Game {
             long turnEnd = System.currentTimeMillis();
             long turnDelta = turnEnd - turnStart;
             if (turnDelta > aiForPlayerGoingFirst.getMaxThinkTime() / 2) {
-                log.warn("turn took {} ms, more than half of alloted think time ({})", turnDelta,
+                log.warn("turn took {} ms, more than half of allowed think time ({})", turnDelta,
                         aiForPlayerGoingFirst.getMaxThinkTime());
             } else {
                 log.debug("turn took {} ms", turnDelta);

@@ -34,6 +34,7 @@ public class Deck implements DeepCopyable<Deck> {
         this.cards = cards;
     }
 
+    // 可借鉴
     /**
      * Shuffles the deck
      */
