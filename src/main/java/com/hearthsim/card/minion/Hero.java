@@ -208,6 +208,8 @@ public abstract class Hero extends Minion implements MinionSummonedInterface {
         return json;
     }
 
+    // 在Map的内部，对key做比较是通过equals()实现的，这一点和List查找元素需要正确覆写equals()是一样的，即正确使用Map必须保证：作为key的对象必须正确覆写equals()方法。
+    // 我们经常使用String作为key，因为String已经正确覆写了equals()方法。但如果我们放入的key是一个自己写的类，就必须保证正确覆写了equals()方法。
     @Override
     public boolean equals(Object o) {
         if (this == o)

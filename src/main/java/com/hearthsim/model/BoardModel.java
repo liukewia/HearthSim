@@ -14,6 +14,7 @@ import com.hearthsim.event.effect.SimpleEffectHand;
 import com.hearthsim.event.filter.FilterHand;
 import com.hearthsim.util.DeepCopyable;
 import com.hearthsim.util.IdentityLinkedList;
+import java.util.Objects;
 import org.json.JSONObject;
 import org.slf4j.MDC;
 
@@ -30,7 +31,7 @@ public class BoardModel implements DeepCopyable<BoardModel>, Iterable<CharacterI
     private final PlayerModel currentPlayer;
     private final PlayerModel waitingPlayer;
 
-    // this uses identity list because we need exact reference equality and we modified Minion.equals
+    // this uses identity list because we need exact *reference equality* and we modified Minion.equals
     private IdentityLinkedList<MinionPlayerPair> allMinionsFIFOList_;
 
     public class MinionPlayerPair {
@@ -58,8 +59,8 @@ public class BoardModel implements DeepCopyable<BoardModel>, Iterable<CharacterI
 
             MinionPlayerPair that = (MinionPlayerPair) o;
 
-            if (minion != null ? !minion.equals(that.minion) : that.minion != null) return false;
-            if (playerSide != null ? !playerSide.equals(that.playerSide) : that.playerSide != null) return false;
+            if (!Objects.equals(minion, that.minion)) return false;
+            if (!Objects.equals(playerSide, that.playerSide)) return false;
 
             return true;
         }

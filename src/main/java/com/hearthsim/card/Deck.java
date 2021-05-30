@@ -35,6 +35,7 @@ public class Deck implements DeepCopyable<Deck> {
     }
 
     // 可借鉴
+    // 对比 collections.shuffle(List)
     /**
      * Shuffles the deck
      */
@@ -72,6 +73,7 @@ public class Deck implements DeepCopyable<Deck> {
      * Add a card to the end of the deck
      * @param card
      */
+    // In HS, players may not only be given a card from deck, but also from elsewhere.
     public void addCard(Card card) {
         cards.add(card);
     }

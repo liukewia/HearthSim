@@ -24,10 +24,18 @@ intellij idea 教程: https://blog.csdn.net/dufufd/article/details/100095685
 
 导入文件：https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
 
+自动格式化插件：https://blog.csdn.net/wangjie5540/article/details/100922015
+
+建议开启:
+![0](./images/save-action.png)
+
+---
 
 eclipse 教程：https://blog.csdn.net/coslay/article/details/46895543
 
 导入文件：https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
+
+自动格式化插件：未知
 
 ## git分支管理
 
@@ -38,7 +46,7 @@ eclipse 教程：https://blog.csdn.net/coslay/article/details/46895543
 
 feat/fix/docs/refactor/perf/test/style/revert/chore(scope/issue): changelog
 
-e.g.: feat: update something
+e.g.: feat: update Drink method in EventProcessor
 
 ---
 

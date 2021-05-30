@@ -188,6 +188,7 @@ public class Card implements DeepCopyable<Card> {
         return copy;
     }
 
+    // 更好的写法见 https://www.liaoxuefeng.com/wiki/1252599548343744/1265116446975264
     @Override
     public boolean equals(Object other) {
         if (other == null) {
@@ -225,6 +226,8 @@ public class Card implements DeepCopyable<Card> {
         return true;
     }
 
+    // https://www.liaoxuefeng.com/wiki/1252599548343744/1265117217944672
+    // 两个相同的字符串永远会计算出相同的hashCode，否则基于hashCode定位的HashMap就无法正常工作。这也是为什么当我们自定义一个class时，覆写equals()方法时我们必须正确覆写hashCode()方法。
     @Override
     public int hashCode() {
         int result = this.getName() != null ? this.getName().hashCode() : 0;
@@ -702,6 +705,7 @@ public class Card implements DeepCopyable<Card> {
         return boardState;
     }
 
+    // JSON 方法只放前端需要的字段
     public JSONObject toJSON() {
         JSONObject json = new JSONObject();
         json.put("name", this.getName());

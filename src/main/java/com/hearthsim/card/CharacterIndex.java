@@ -10,7 +10,10 @@ import java.util.Map;
  */
 public enum CharacterIndex {
 
-    HERO(0),  // assign value for all attributes https://www.cnblogs.com/mimosading/archive/2013/12/13/3472578.html
+    // 但是，如果不小心修改了枚举的顺序，编译器是无法检查出这种逻辑错误的。要编写健壮的代码，就不要依靠ordinal()的返回值。
+    // 因为enum本身是class，所以我们可以定义private的构造方法，并且，给每个枚举常量添加字段
+    // assign value for all attributes https://www.cnblogs.com/mimosading/archive/2013/12/13/3472578.html
+    HERO(0),
     MINION_1(1), // each of it is a CharacterIndex
     MINION_2(2),
     MINION_3(3),

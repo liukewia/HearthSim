@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 
+// Minion => CreatureCard
 public class Minion extends Card implements EffectOnResolveTargetable<Card>, CardEndTurnInterface, CardStartTurnInterface {
     private static final Logger log = LoggerFactory.getLogger(Card.class);
 
@@ -37,6 +38,7 @@ public class Minion extends Card implements EffectOnResolveTargetable<Card>, Car
     }
 
     public static MinionTribe StringToMinionTribe(String race) {
+        // null value handling
         race = race == null ? "" : race.toLowerCase();
         switch (race) {
             case "beast":
