@@ -29,7 +29,7 @@ https://www.cnblogs.com/alwayswyy/p/5674635.html
 
 intellij idea 教程: https://blog.csdn.net/dufufd/article/details/100095685
 
-导入文件：https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
+导入文件：https://drive.google.com/file/d/15QT_r731osEM-wUauFnQStrTTEzDvZJi/view?usp=sharing
 
 自动格式化插件：https://blog.csdn.net/wangjie5540/article/details/100922015
 
@@ -40,7 +40,7 @@ intellij idea 教程: https://blog.csdn.net/dufufd/article/details/100095685
 
 eclipse 教程：https://blog.csdn.net/coslay/article/details/46895543
 
-导入文件：https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
+导入文件：https://drive.google.com/file/d/1jYxj1TQBK_bg9q7EE2AcR8hzjM2p0tWQ/view?usp=sharing
 
 自动格式化插件：未知
 
